@@ -1,6 +1,59 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+class IntroPage extends StatelessWidget {
+
+  final String _title;
+  final String _description;
+  final String _imagePath;
+  final bool _isRichText;
+
+  IntroPage(this._title, this._description, this._imagePath, this._isRichText);
+
+  @override
+  Widget build(BuildContext context) {
+    Widget titleWidget;
+    if (_isRichText) {
+      titleWidget = IntroRichTitle(_title);
+    } else {
+      titleWidget = IntroTitle(_title);
+    }
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            Color.fromRGBO(31, 11, 56, 1),
+            Color.fromRGBO(60, 0, 133, 1)
+          ]
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: IntroTitle(_title),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: IntroDescription(_description),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: IntroImage(_imagePath),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class IntroTitle extends StatelessWidget {
 
   final String _title;
