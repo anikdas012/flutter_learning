@@ -18,37 +18,74 @@ class IntroPage extends StatelessWidget {
     } else {
       titleWidget = IntroTitle(_title);
     }
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            Color.fromRGBO(31, 11, 56, 1),
-            Color.fromRGBO(60, 0, 133, 1)
-          ]
+    return Scaffold(
+      body: Center(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color.fromRGBO(31, 11, 56, 1),
+                Color.fromRGBO(60, 0, 133, 1)
+              ]
+            ),
+          ),
+          child: Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 80.0),
+                  child: SizedBox(
+                    height: 200.0,
+                    width: 200.0,
+                    child: titleWidget,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 140.0),
+                  child: SizedBox(
+                    height: 300.0,
+                    width: 250.0,
+                    child: IntroDescription(_description),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IntroImage(_imagePath),
+                ),
+              )
+            ],
+          )
+          /*Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              // mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: IntroTitle(_title),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: IntroDescription(_description),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: IntroImage(_imagePath),
+                ),
+              ],
+          )*/,
         ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        // mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: IntroTitle(_title),
-          ),
-          Align(
-            alignment: Alignment.center,
-            child: IntroDescription(_description),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: IntroImage(_imagePath),
-          ),
-        ],
       ),
     );
   }
