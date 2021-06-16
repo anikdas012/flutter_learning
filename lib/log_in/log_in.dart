@@ -1,6 +1,101 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+class LogIn extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => LogInState();
+}
+
+class LogInState extends State<LogIn> {
+
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    userNameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/sme_splash.png"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 80.0),
+                  child: SizedBox(
+                    height: 200.0,
+                    width: 200.0,
+                    child: LogInImageWidget(),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 250.0),
+                  child: SizedBox(
+                    height: 300.0,
+                    width: 300.0,
+                    child: LogInUsernameWidget(userNameController),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 330.0),
+                  child: SizedBox(
+                    height: 300.0,
+                    width: 300.0,
+                    child: LogInPasswordWidget(passwordController),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 400.0),
+                  child: SizedBox(
+                    height: 50.0,
+                    width: 300.0,
+                    child: LogInButton(userNameController, passwordController),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 445.0),
+                  child: Wrap(
+                    children: [
+                      ForgotPasswordButton(),
+                  ]
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class LogInUsernameWidget extends StatelessWidget {
   final TextEditingController _controller;
 
