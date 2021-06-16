@@ -128,3 +128,21 @@ class LogInButton extends StatelessWidget {
     );
   }
 }
+
+class ForgotPasswordButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: TextButton.styleFrom(
+        primary: Colors.white,
+        textStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      onPressed: () {},
+      child: Text("Forgot Password?")
+    );
+  }
+}
