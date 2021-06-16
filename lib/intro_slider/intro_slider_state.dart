@@ -153,7 +153,7 @@ class IntroScreenState extends State<IntroScreen> {
       scrollPhysics: BouncingScrollPhysics(),
 
       // Show or hide status bar
-      hideStatusBar: true,
+      hideStatusBar: false,
 
       // On tab change completed
       onTabChangeCompleted: this.onTabChangeCompleted,
