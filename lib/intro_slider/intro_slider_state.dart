@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/log_in/log_in.dart';
 import 'package:intro_slider/dot_animation_enum.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:intro_slider/slide_object.dart';
+import 'package:page_transition/page_transition.dart';
 
 import 'intro_slider.dart';
 import 'intro_screen.dart';
@@ -66,9 +68,16 @@ class IntroScreenState extends State<IntroScreen> {
     );
   }
 
-  void onDonePress() {
+  void showLogInPage() {
     // Back to the first tab
-    this.goToTab(0);
+    // this.goToTab(0);
+    Navigator.push(
+      context,
+      PageTransition(
+        child: LogIn(),
+        type: PageTransitionType.rightToLeftWithFade,
+      )
+    );
   }
 
   void onTabChangeCompleted(index) {
@@ -119,15 +128,14 @@ class IntroScreenState extends State<IntroScreen> {
 
       // Skip button
       renderSkipBtn: this.renderSkipBtn(),
+      onSkipPress: this.showLogInPage,
 
       // Next button
       renderNextBtn: this.renderNextBtn(),
 
       // Done button
-      /*renderDoneBtn: this.renderDoneBtn(),
-      onDonePress: this.onDonePress,*/
-      /*colorDoneBtn: Color(0x33ffcc5c),
-      highlightColorDoneBtn: Color(0xffffcc5c),*/
+      renderDoneBtn: this.renderDoneBtn(),
+      onDonePress: this.showLogInPage,
 
       // Dot indicator
       colorDot: Colors.grey,
