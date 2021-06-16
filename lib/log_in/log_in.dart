@@ -110,3 +110,21 @@ class LogInImageWidget extends StatelessWidget {
     );
   }
 }
+
+class LogInButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.orange[700],
+        textStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 16.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      onPressed: () {},
+      child: Text("Log In")
+    );
+  }
+}
