@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class LogInUsernameWidget extends StatelessWidget {
+  final TextEditingController _controller;
+
+  LogInUsernameWidget(this._controller);
+
   @override
   Widget build(BuildContext context) {
     return new Theme(
@@ -26,6 +30,7 @@ class LogInUsernameWidget extends StatelessWidget {
             ),
             contentPadding: EdgeInsets.zero,
           ),
+          controller: _controller,
           cursorColor: Colors.orange,
           cursorHeight: 20.0,
           style: TextStyle(
@@ -38,14 +43,21 @@ class LogInUsernameWidget extends StatelessWidget {
 }
 
 class LogInPasswordWidget extends StatefulWidget {
+  final TextEditingController _controller;
+
+  LogInPasswordWidget(this._controller);
+
   @override
   State<StatefulWidget> createState() {
-    return LogInPasswordState();
+    return LogInPasswordState(_controller);
   }
 }
 
 class LogInPasswordState extends State<LogInPasswordWidget> {
   bool _passwordVisible = false;
+  final TextEditingController _controller;
+
+  LogInPasswordState(this._controller);
 
   @override
   void initState() {
@@ -87,6 +99,7 @@ class LogInPasswordState extends State<LogInPasswordWidget> {
             },
           ),
         ),
+        controller: _controller,
         obscureText: _passwordVisible,
         cursorColor: Colors.orange,
         cursorHeight: 20.0,
